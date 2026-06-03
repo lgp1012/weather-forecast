@@ -8,11 +8,19 @@ export default function useWeather(city) {
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {   
+    useEffect(() => {
         const fetchWeatherData = async () => {
+            setLoading(true);
+            setError(null);
+            setData(null);
+
             try {
                 const responseWeather = await fetch(`${URL_WEATHER_API}q=${city}&units=metric&appid=${API_KEY}`);
                 const dataWeather = await responseWeather.json();
+
+                if (!responseWeather.ok) {
+                    throw new Error(dataWeather?.message || "Không có thông tin về địa điểm này");
+                }
 
                 setData(dataWeather);
             } catch (error) {
@@ -20,7 +28,7 @@ export default function useWeather(city) {
             } finally {
                 setLoading(false);
             }
-        }
+        };
 
         fetchWeatherData();
     }, [city])

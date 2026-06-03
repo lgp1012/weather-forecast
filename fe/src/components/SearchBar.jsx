@@ -1,5 +1,7 @@
 import { useState } from "react";
-const cities = ["Ho Chi Minh City", "Vung Tau", "Can Thơ", "Thai Binh"];
+import cities from "../utils/cities";
+import "../assets/styles/search-bar.css";
+
 
 export default function SearchBar({ selectCity }) {
     const [query, setQuery] = useState("");
@@ -9,28 +11,29 @@ export default function SearchBar({ selectCity }) {
         city.toLowerCase().includes(query.toLowerCase())
     );
 
-    const showDropdown = query.trim() !== "" && filterCities.length > 0 && isOpen;
+    const showDropdown = query.trim() !== "" && isOpen;
 
     return (
-        <div>
+        <div className="search-bar-container">
             <input type="search" placeholder="Search for cities" value={query} onChange={(e) => setQuery(e.target.value)} onFocus={() => setIsOpen(true)}></input>
             {showDropdown && (
-                <div className="cities-search">
-                    <ul>
-                        {filterCities.map((city, index) => {
-                            const id = `${index}-${city}`;
-                            return (
-                                <li key={id}
-                                    onClick={() => {
-                                        selectCity(city);
-                                        setQuery(city);
-                                        setIsOpen(false);
-                                    }}>
-                                    {city}
-                                </li>
-                            );
-                        })}
-                    </ul>
+                <div className="dropdown-box">
+                    {filterCities.length === 0 ? <p>No cities found</p> :
+                        <ul>
+                            {filterCities.map((city, index) => {
+                                const id = `${index}-${city}`;
+                                return (
+                                    <li key={id}
+                                        onClick={() => {
+                                            selectCity(city);
+                                            setQuery(city);
+                                            setIsOpen(false);
+                                        }}>
+                                        {city}
+                                    </li>
+                                );
+                            })}
+                        </ul>}
                 </div>
             )}
         </div>

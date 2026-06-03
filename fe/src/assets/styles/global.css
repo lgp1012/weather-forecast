@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    color: #333;
+    min-height: 100vh;
+    padding: 24px;
+}
+
+.app-container {
+    max-width: 1200px;
+    min-height: calc(100vh - 48px);
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.location-message-panel {
+    flex: 1;
+    margin-top: 12px;
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    border-radius: 28px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 24px 64px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.status-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
+    padding: 28px;
+}
+
+.status-media {
+    width: min(240px, 60vw);
+    height: auto;
+    object-fit: contain;
+}
+
+.status-media--loading {
+    width: min(180px, 48vw);
+    animation: floatPulse 2.2s ease-in-out infinite;
+}
+
+.status-message {
+    max-width: 520px;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    line-height: 1.5;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 65%) minmax(0, 35%);
+    grid-template-areas:
+        "current daily"
+        "hourly daily"
+        "air daily";
+    gap: 16px;
+    margin-top: 12px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "current"
+            "hourly"
+            "air"
+            "daily";
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    .app-container {
+        padding: 0;
+    }
+}
+
+@keyframes floatPulse {
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.92;
+    }
+    50% {
+        transform: translateY(-6px) scale(1.02);
+        opacity: 1;
+    }
+}

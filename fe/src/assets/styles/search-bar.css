@@ -1,0 +1,43 @@
+.search-bar-container {
+    position: relative;
+    width: 100%;
+    input {
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #eef6fd;
+        border: none;
+        border-radius: 999px;
+    }
+    [placeholder] {
+        font-style: italic;
+        color: #a7a7a7;
+    }
+}
+
+.dropdown-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 1000;
+    margin-top: 5px;
+    border-radius: 10px;    
+    ul{
+        list-style: none;
+        li{
+            padding: 10px;
+            cursor: pointer;
+            &:hover {
+                background-color: #f0f0f0;
+            }
+        }
+    }
+    p {
+        padding: 10px;
+        color: #555;
+    }
+}

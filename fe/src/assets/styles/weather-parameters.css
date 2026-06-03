@@ -1,0 +1,60 @@
+.weather-parameters-container {
+    width: 100%;
+    grid-area: air;
+    border-radius: 20px;
+    background-color: #eef6fd;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "title action"
+        "params params";
+    align-items: center;
+    padding: 20px 30px;
+    min-height: 240px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    column-gap: 15px;
+    row-gap: 5px;
+
+    h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        grid-area: title;
+    }
+
+    .parameters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px 22px;
+        grid-area: params;
+    }
+
+    .parameter-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    label {
+        font-size: 0.95rem;
+        color: #7a8593;
+    }
+
+    span {
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .see-more-btn {
+        grid-area: action;
+        justify-self: end;
+        border: none;
+        background: #3498ff;
+        color: white;
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+    }
+}
