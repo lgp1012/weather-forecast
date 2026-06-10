@@ -19,7 +19,7 @@ export default function useWeather(city) {
                 const dataWeather = await responseWeather.json();
 
                 if (!responseWeather.ok) {
-                    throw new Error(dataWeather?.message || "Không có thông tin về địa điểm này");
+                    throw new Error(dataWeather?.message || "No weather information found for this location");
                 }
 
                 setData(dataWeather);

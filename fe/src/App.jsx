@@ -1,6 +1,7 @@
 import SearchBar from "./components/SearchBar";
 import CurrentWeather from "./components/CurrentWeather";
 import ForecastHourly from "./components/ForecastHourly";
+import useForecastDaily from "./hooks/useForecastDaily";
 import WeatherParameters from "./components/WeatherParameters";
 import ForecastDaily from "./components/ForecastDaily";
 import { useState } from "react";
@@ -14,6 +15,7 @@ function App() {
   const [city, setCity] = useState("Ho Chi Minh City");
   const currentWeather = useWeather(city);
   const hourlyForecast = useForecastHourly(city);
+  const dailyForecast = useForecastDaily(city);
 
   const isLoading = currentWeather.isLoading || hourlyForecast.isLoading;
   const error = currentWeather.error || hourlyForecast.error;
@@ -30,7 +32,7 @@ function App() {
           <CurrentWeather city={city} data={currentWeather.data} />
           <ForecastHourly data={hourlyForecast.data} />
           <WeatherParameters data={currentWeather.data} />
-          <ForecastDaily />
+          <ForecastDaily data={dailyForecast.data} />
         </div>
       )}
     </div>

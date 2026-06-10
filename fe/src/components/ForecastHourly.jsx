@@ -1,4 +1,3 @@
-import useForecastHourly from "../hooks/useForecastHourly.js";
 import "../assets/styles/forecast-hourly.css";
 import weatherIcons from "../utils/weatherIcons.js";
 
@@ -15,7 +14,7 @@ export default function ForecastHourly({ data }) {
             minute: "2-digit"
 
         });
-        return { time, temp: main.temp, weather: weather[0].main };
+        return { time, temp: Math.round(main.temp), weather: weather[0].main };
     }).slice(0, 6);
 
     return (

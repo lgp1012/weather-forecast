@@ -19,7 +19,7 @@ export default function useForecastHourly(city) {
                 const data = await response.json();
 
                 if (!response.ok) {
-                    throw new Error(data?.message || "Không có thông tin về địa điểm này");
+                    throw new Error(data?.message || "Failed to fetch hourly forecast");
                 }
 
                 setData(data);
